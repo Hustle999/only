@@ -1,0 +1,154 @@
+@import "tailwindcss";
+
+@theme {
+  --font-serif: "Noto Serif", Georgia, Cambria, "Times New Roman", serif;
+  --font-sans: "Noto Sans", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --color-midnight: #0B1019;
+  --color-midnight-surface: #121926;
+  --color-ivory: #F4EFE7;
+  --color-ivory-warm: #FAF7F2;
+  --color-lavender: #AAA0C8;
+  --color-lavender-subtle: #7A7299;
+}
+
+:root {
+  color-scheme: dark;
+}
+
+html {
+  background-color: #0B1019;
+  color: #F4EFE7;
+  font-family: var(--font-sans);
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+  overflow-x: hidden;
+  background-color: #0B1019;
+}
+
+/* Mongolian Cyrillic typography nuances */
+h1, h2, h3, .font-serif {
+  font-family: "Noto Serif", Georgia, Cambria, serif;
+  font-feature-settings: "kern" 1, "liga" 1;
+}
+
+p, .font-sans {
+  font-family: "Noto Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+}
+
+/* Letter body: lightly hand-written but very readable */
+.font-letter,
+.font-letter p {
+  font-family: "Pangolin", "Noto Sans", system-ui, sans-serif;
+  letter-spacing: 0.005em;
+}
+
+/* Greeting & signature: pen-like handwriting */
+.font-signature {
+  font-family: "Caveat", "Pangolin", cursive;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+}
+
+/* Subtle Starfield & Ambient Glow */
+@keyframes starPulse {
+  0%, 100% {
+    opacity: 0.15;
+    transform: scale(0.9);
+  }
+  50% {
+    opacity: 0.85;
+    transform: scale(1.15);
+  }
+}
+
+@keyframes moonBreathe {
+  0%, 100% {
+    filter: drop-shadow(0 0 16px rgba(170, 160, 200, 0.22));
+  }
+  50% {
+    filter: drop-shadow(0 0 24px rgba(170, 160, 200, 0.38));
+  }
+}
+
+@keyframes sealShimmer {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.animate-star-pulse {
+  animation: starPulse var(--pulse-duration, 4s) ease-in-out infinite;
+}
+
+.animate-moon-breathe {
+  animation: moonBreathe 8s ease-in-out infinite;
+}
+
+/* Physical Paper Surface effect */
+.paper-sheet {
+  background-color: #FAF7F2;
+  color: #1F242E;
+  box-shadow:
+    0 1px 3px rgba(0, 0, 0, 0.1),
+    0 16px 36px -8px rgba(0, 0, 0, 0.5),
+    0 32px 72px -16px rgba(0, 0, 0, 0.7);
+  position: relative;
+}
+
+/* Subtle deckle / edge shading for the letter paper */
+.paper-sheet::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: radial-gradient(
+    circle at 50% 0%,
+    rgba(255, 255, 255, 0.45) 0%,
+    rgba(240, 235, 222, 0) 70%
+  );
+  border-radius: inherit;
+}
+
+/* Silver Moon Wax Seal */
+.silver-moon-seal {
+  background: radial-gradient(circle at 35% 30%, #E8EBF2 0%, #B8C0D0 45%, #8892A6 80%, #5E677B 100%);
+  box-shadow:
+    0 4px 14px rgba(0, 0, 0, 0.55),
+    inset 0 1px 2px rgba(255, 255, 255, 0.7),
+    inset 0 -2px 3px rgba(0, 0, 0, 0.35);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.25s ease;
+}
+
+.silver-moon-seal:hover {
+  transform: scale(1.04);
+  box-shadow:
+    0 6px 20px rgba(170, 160, 200, 0.35),
+    0 4px 14px rgba(0, 0, 0, 0.6),
+    inset 0 1px 2px rgba(255, 255, 255, 0.9);
+}
+
+/* Prefers Reduced Motion */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

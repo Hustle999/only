@@ -1,0 +1,6 @@
+{
+  "name": "Сарны гэрэлд",
+  "description": "Хэлж амжаагүй хэдэн үг. Сэтгэлийн нандин захиа.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
